@@ -1,0 +1,158 @@
+<template>
+  <div class="HotMoreMusic">
+     <header>
+      <div class="goBack" @click="goBack"><img src="../../assets/flagMusic/down.png" alt=""></div>
+      <div class="tit">网友精选歌单</div>
+    </header>
+    <main class="main">
+      <div :class="showList?hed1:hed">
+          <van-button v-for="(item,index) in listName" :key="index" class="list" :color="item.color" @click="listGetMusic(item.name)">{{item.name}}</van-button>
+      </div>
+      <div class="ListBody">
+        <div class="itemgrid" v-for="item in HotMoreMusic" :key="item.id">
+          <div class="img">
+            <img :src="item.coverImgUrl">
+          </div>
+            <h3>{{item.name}}</h3>
+        </div>
+      </div>
+    </main>
+</div>
+</template>
+<style lang="less" scoped>
+.main{
+  overflow: auto;
+}
+  header{
+    width: 100%;
+    height:  2.25rem /* 36/16 */;
+    overflow: hidden;
+    .goBack{
+      width: 13%;
+      height: 100%;
+      display: inline-block;
+      img{
+        display: block;
+        width: 40%;
+        margin: 0 auto;
+        margin-top: 10px;
+        transform: rotate(90deg);
+      }
+    }
+    .tit{
+      overflow: hidden;
+      width: 87%;
+      height: 100%;
+      line-height: 2.9rem /* 36/16 */;
+      display: inline-block;
+      padding-right: 3.0625rem /* 49/16 */;
+      text-align: center;
+      font-size: 0.95rem /* 16/16 */;
+    }
+  }
+  .hed{
+    height: 2.5rem;
+    margin-top: 0.6rem;
+    width: 100vw;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+    box-shadow: 0px 7px 9px 1px #ccc;
+    margin-bottom: 0.8rem;
+    .list{
+      width: 4rem;
+      height: 1.8rem;
+      border-radius: 0.3rem;
+      display: inline-block;
+      margin-top: 0.35rem;
+      margin-left: 0.55rem;
+      padding: 0;
+      line-height: 1.8rem;
+    }
+  }
+  .hed.showListMActive{
+    height: 7.3rem;
+  }
+  .itemgrid{
+    width: 45%;
+    height: 13.5rem;
+    float: left;
+    margin-left: 3.33%;
+    margin-bottom: 0.5rem;
+    border: 1px solid #e4dfdf;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+    box-shadow: 0px 0px 9px 1px #cdc6d0;
+    .img{
+      width: 100%;
+      float: left;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      img{
+        width: 100%;
+      }
+    }
+    h3{
+      float: left;
+      padding: 0 0.1rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient: vertical;
+    }
+  }
+</style>
+<script>
+import Vue from 'vue'
+import { PullRefresh, Toast, Button, Tab, Tabs } from 'vant'
+
+Vue.use(PullRefresh, Toast, Button, Tab, Tabs)
+export default {
+  created () {
+    this.getPlayList()
+  },
+  data () {
+    return {
+      week: '',
+      HotMoreMusic: [],
+      limit: 20,
+      showList: false,
+      hed1: ['hed', 'showListMActive'],
+      hed: 'hed',
+      listName: [
+        { name: 'A L L', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '浪漫', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '话语', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: 'D J', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '话语', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '古风', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '学习', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '韩语', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '清晨', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '欧美', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '伤感', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '孤独', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '民谣', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '轻音乐', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '流行', color: 'linear-gradient(to right,  #4bb0ff, #6149f6)' }]
+    }
+  },
+  methods: {
+    getPlayList () {
+      this.$http.post(`/top/playlist?limit=${this.limit}`)
+        .then((res) => {
+          console.log(res)
+          this.HotMoreMusic = res.data.playlists
+        })
+    },
+    goBack () {
+      this.$router.back(-1)
+    },
+    listGetMusic (item) {
+      if (item === 'A L L') {
+        this.showList = !this.showList
+      }
+    }
+  }
+}
+</script>

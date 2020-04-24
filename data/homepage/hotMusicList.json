@@ -1,0 +1,29 @@
+{
+    "data":[
+        {
+            "imgPath": "https://p3fx.kgimg.com/soft/collection/150/20200325/20200325201031631254.jpg",
+            "name": "国风新歌 2020年03月刊",
+            "id":"homepage1"
+        }, {
+            "imgPath": "https://p3fx.kgimg.com/soft/collection/150/20200416/20200416163225901881.jpg",
+            "name": "每周推荐歌曲",
+            "id":"homepage2"
+        }, {
+            "imgPath": "https://imgessl.kugou.com/custom/150/20200415/20200415014335577086.jpg",
+            "name": "一人一首胡66，哪首成了你的单曲循环？",
+            "id":"homepage3"
+        }, {
+            "imgPath": "https://imgessl.kugou.com/custom/150/20191122/20191122114806709342.jpg",
+            "name": "『华语』趁还来得及，我要抱紧你",
+            "id":"homepage4"
+        }, {
+            "imgPath": "https://p3fx.kgimg.com/soft/collection/150/20200411/20200411122925254133.jpg",
+            "name": "做更强大的自己",
+            "id":"homepage5"
+        }, {
+            "imgPath": "https://p3fx.kgimg.com/soft/collection/150/20200330/20200330170945717322.jpg",
+            "name": "霓虹の音 2020年3月号【完结】",
+            "id":"homepage6"
+        }
+    ]
+}
