@@ -6,7 +6,8 @@
     </header>
     <main class="main">
       <div :class="showList?hed1:hed">
-          <van-button v-for="(item,index) in listName" :key="index" class="list" :color="item.color" @click="listGetMusic(item.name)">{{item.name}}</van-button>
+         <!-- <van-button class="list" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="listGetMusic(item.name)">A L L</van-button> -->
+          <van-button v-for="(item,index) in listName" :key="index" class="list" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="listGetMusic(item.name)">{{item.name}}</van-button>
       </div>
       <div class="ListBody">
         <div class="itemgrid" v-for="item in HotMoreMusic" :key="item.id">
@@ -20,13 +21,15 @@
 </div>
 </template>
 <style lang="less" scoped>
-.main{
-  overflow: auto;
+.HotMoreMusic{
+  position: relative;
 }
   header{
     width: 100%;
     height:  2.25rem /* 36/16 */;
     overflow: hidden;
+    position: static;
+    top: 0;
     .goBack{
       width: 13%;
       height: 100%;
@@ -58,6 +61,8 @@
     transition: 0.5s ease-in-out;
     box-shadow: 0px 7px 9px 1px #ccc;
     margin-bottom: 0.8rem;
+    position: static;
+    top: 2.25rem;
     .list{
       width: 4rem;
       height: 1.8rem;
@@ -104,9 +109,9 @@
 </style>
 <script>
 import Vue from 'vue'
-import { PullRefresh, Toast, Button, Tab, Tabs } from 'vant'
+import { Toast, Button, Tab, Tabs } from 'vant'
 
-Vue.use(PullRefresh, Toast, Button, Tab, Tabs)
+Vue.use(Toast, Button, Tab, Tabs)
 export default {
   created () {
     this.getPlayList()
@@ -120,9 +125,9 @@ export default {
       hed1: ['hed', 'showListMActive'],
       hed: 'hed',
       listName: [
-        { name: 'A L L', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: 'Down', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
         { name: '浪漫', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
-        { name: '话语', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '华语', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
         { name: 'D J', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
         { name: '话语', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
         { name: '古风', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
@@ -134,7 +139,8 @@ export default {
         { name: '孤独', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
         { name: '民谣', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
         { name: '轻音乐', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
-        { name: '流行', color: 'linear-gradient(to right,  #4bb0ff, #6149f6)' }]
+        { name: '流行', color: 'linear-gradient(to right,  #4bb0ff, #6149f6)' }
+      ]
     }
   },
   methods: {
@@ -149,7 +155,7 @@ export default {
       this.$router.back(-1)
     },
     listGetMusic (item) {
-      if (item === 'A L L') {
+      if (item === 'Down') {
         this.showList = !this.showList
       }
     }

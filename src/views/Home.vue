@@ -1,10 +1,11 @@
 <template>
   <div class="home">
+        <van-button class="stop" @click="stopFlag">停止/播放</van-button>
  <router-view/>
     <div id="nav">
       <router-link to="/home/homepager">Home</router-link>
       <router-link to="/home/about">Iibrary</router-link>
-      <div @click="goFlagMusic" class="flagMusic" :id="flagMusic?flagBGimg:'' "></div>
+      <div class="route" @click="goFlagMusic"><div class="flagMusic" :id="flagMusic?flagBGimg:'' "></div></div>
       <router-link to="/home/index">Rank</router-link>
       <router-link to="/home/MyInfo">My</router-link>
       <!-- <router-link v-for="item in navBar" :key="item.id" :to="item.path">{{item.name}}</router-link> -->
@@ -13,17 +14,27 @@
 </template>
 
 <style lang="less" scoped>
+.route{
+  position: absolute;
+  width: 2.7rem;
+  height: 2.7rem;
+  left: 53%;
+  top: 0.1rem;
+  transform: translateX(-50%);
+}
 .home {
-  position: relative;
   height: 100%;
   width: 100%;
   padding-bottom: 3rem;
+  position: relative;
+
   #nav {
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    top: calc(100vh - 3rem);
+    left: 0rem;
     height: 3rem;
-    width: 100%;
-    background-color: rgba(0,0,0,0.4);
+    width: 100vw;
+    background-color: #99969666;
 
     a {
       position: absolute;
@@ -79,22 +90,33 @@
   }
   .flagMusic{
     position: absolute;
-    width: 2.6rem;
-    height: 2.6rem;
-    position: absolute;
-    left: 47%;
-    top: 0.14rem;
+    width: 2.7rem;
+    height: 2.7rem;
+    left: 0;
     background-color: #fff;
     border-radius: 50%;
-    transform: translateX(-50%);
     background-size: 75px;
     background-position: center center;
     background-repeat: no-repeat;
     background-image: url('./bgi3.jpg');
-    animation: spin 15s infinite linear;
+    animation: spin 30s infinite linear;
+    border: thick double #a2e4ff;
   }
   #flagBGimg{
     animation-play-state:paused;
+  }
+  .route::after{
+     content: '';
+     position: absolute;
+     left: 50%;
+     transform: translate(-50%,-50%);
+     top: 50%;
+     width: 1.5rem;
+     height: 1.5rem;
+     background-color: #ff2e13;
+     border-radius: 50%;
+     background-image: url('../assets/flagMusic/flag1.png');
+     background-size: 100% 100%;
   }
    @keyframes spin {
        from {
@@ -104,7 +126,18 @@
            transform: rotate(360deg);
        }
    }
+
+    // @keyframes spin2 {
+    //     from {
+    //         transform: translate(-50%, 22px) rotate(0turn) translate(50%, -22px) rotate(1turn)
+    //     }
+
+    //     to {
+    //         transform: translate(-50%, 22px) rotate(1turn) translate(50%, -22px) rotate(0turn)
+    //     }
+    // }
 }
+
 </style>
 
 <script>
@@ -114,6 +147,8 @@ import { Circle } from 'vant'
 
 Vue.use(Circle)
 export default {
+  props: {
+  },
   data () {
     return {
       currentRate: 0,
@@ -123,12 +158,17 @@ export default {
         '0%': '#3fecff',
         '100%': '#6149f6'
       },
-      isRotation: true
+      isRotation: true,
+      pseudoElementBoxShadow: { default: 'spin2 5s infinite linear' }
     }
   },
   methods: {
     goFlagMusic () {
       this.$router.push('/flagMusic')
+    },
+    stopFlag () {
+      this.flagMusic = !this.flagMusic
+      console.log(this.$refs.singleDom)
     }
   }
 }

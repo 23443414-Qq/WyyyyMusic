@@ -11,7 +11,17 @@
           <img :src="item.coverImgUrl" alt="">
           <p class="Musictext">{{item.name}}</p>
         </div>
-        <van-button class="stop">停止播放</van-button>
+        <h1>123123123123</h1>
+        <h1>123123123123</h1>
+        <h1>123123123123</h1>
+        <h1>123123123123</h1>
+        <h1>123123123123</h1>
+        <h1>123123123123</h1>
+        <h1>123123123123</h1>
+        <h1>123123123123</h1>
+        <h1>123123123123</h1>
+        <h1>123123123123</h1>
+        <h1>123123123123</h1>
       </div>
     </template>
     <!-- {https://www.xiami.com/api/song/getSongs?_s=01918b5dfbc39b3914802fc4caf1306f&_xm_cf_=vo-gJ31EAoXvvFmzQXrfLLzp} -->
