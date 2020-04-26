@@ -23,10 +23,5 @@ export default {
   background-size:100% 100%;
   font-size: 10px;
 }
-.cantainer{
-  height: 100vh;
-  background-size: 100% 100%;
-  // background-color: #d2d2d2;
-  // background-image: url("./assets/gbi.jpg");
-}
+
 </style>

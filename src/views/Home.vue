@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-        <van-button class="stop" @click="stopFlag">停止/播放</van-button>
- <router-view/>
+    <div class="container">
+      <router-view/>
+    </div>
     <div id="nav">
       <router-link to="/home/homepager">Home</router-link>
       <router-link to="/home/about">Iibrary</router-link>
@@ -23,15 +24,21 @@
   transform: translateX(-50%);
 }
 .home {
-  height: 100%;
+  height: calc(100vh - 0rem);
   width: 100%;
   padding-bottom: 3rem;
   position: relative;
-
+  top: 0;
+.container{
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  height: calc(100vh - 3rem);
+}
   #nav {
-    position: fixed;
-    top: calc(100vh - 3rem);
+    position: absolute;
     left: 0rem;
+    bottom: 0;
     height: 3rem;
     width: 100vw;
     background-color: #99969666;

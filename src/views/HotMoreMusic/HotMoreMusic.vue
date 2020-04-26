@@ -4,18 +4,16 @@
       <div class="goBack" @click="goBack"><img src="../../assets/flagMusic/down.png" alt=""></div>
       <div class="tit">网友精选歌单</div>
     </header>
+    <div :class="showList?hed1:hed">
+        <!-- <van-button class="list" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="listGetMusic(item.name)">A L L</van-button> -->
+        <van-button v-for="(item,index) in listName" :key="index" class="list" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="listGetMusic(item.name)">{{item.name}}</van-button>
+    </div>
     <main class="main">
-      <div :class="showList?hed1:hed">
-         <!-- <van-button class="list" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="listGetMusic(item.name)">A L L</van-button> -->
-          <van-button v-for="(item,index) in listName" :key="index" class="list" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="listGetMusic(item.name)">{{item.name}}</van-button>
-      </div>
-      <div class="ListBody">
         <div class="itemgrid" v-for="item in HotMoreMusic" :key="item.id">
           <div class="img">
             <img :src="item.coverImgUrl">
           </div>
             <h3>{{item.name}}</h3>
-        </div>
       </div>
     </main>
 </div>
@@ -23,6 +21,10 @@
 <style lang="less" scoped>
 .HotMoreMusic{
   position: relative;
+}
+.main{
+  height: calc(100vh - 5.35rem);
+  overflow: auto;
 }
   header{
     width: 100%;

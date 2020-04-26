@@ -11,17 +11,7 @@
           <img :src="item.coverImgUrl" alt="">
           <p class="Musictext">{{item.name}}</p>
         </div>
-        <h1>123123123123</h1>
-        <h1>123123123123</h1>
-        <h1>123123123123</h1>
-        <h1>123123123123</h1>
-        <h1>123123123123</h1>
-        <h1>123123123123</h1>
-        <h1>123123123123</h1>
-        <h1>123123123123</h1>
-        <h1>123123123123</h1>
-        <h1>123123123123</h1>
-        <h1>123123123123</h1>
+
       </div>
     </template>
     <!-- {https://www.xiami.com/api/song/getSongs?_s=01918b5dfbc39b3914802fc4caf1306f&_xm_cf_=vo-gJ31EAoXvvFmzQXrfLLzp} -->
@@ -60,7 +50,7 @@ export default {
 .recommend{
   width:100%;
   height:100%;
-  overflow: hidden;
+  overflow: auto;
   padding: 0 10px;
 }
 .head{
