@@ -106,7 +106,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-image: url('./bgi3.jpg');
-    animation: spin 30s infinite linear;
+    animation: spin 20s infinite linear;
     border: thick double #a2e4ff;
   }
   #flagBGimg{

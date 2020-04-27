@@ -94,7 +94,7 @@ export default {
       this.$router.back(-1)
     },
     parmas () {
-      console.log(this.$refs)
+      console.log(this.$route.params)
     }
   }
 }

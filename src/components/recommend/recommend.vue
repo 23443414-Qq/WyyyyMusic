@@ -15,7 +15,6 @@
           <span class="titDay">Day</span> 推荐&nbsp;&nbsp;Music
           <span class="more">更多单曲≯</span>
         </div>
-
       </div>
     </template>
   </div>
@@ -39,10 +38,9 @@ export default {
     }
   },
   methods: {
-    getPlayList () {
+    getPlayList () { // 首页推荐歌单
       this.$http.post('/top/playlist?limit=6')
         .then((res) => {
-          // console.log(res)
           this.hot.MusicList = res.data.playlists
         })
     },
@@ -50,9 +48,7 @@ export default {
       this.$router.push('/hotmoremusic')
     },
     MusicItem (item, name) {
-      // console.log(item)
       this.$router.push({ name: 'songList', params: { id: item.id, name: name } })
-      // 979519558
     },
     day () {
       this.$http.post('/login/refresh')
