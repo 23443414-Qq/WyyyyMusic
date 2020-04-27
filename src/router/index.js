@@ -1,3 +1,4 @@
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
@@ -7,6 +8,7 @@ import My from '../views/my/myInfo.vue'
 import HomePage from '../views/homepage/homepage.vue'
 import FlagMusic from '../views/flagMusic/flagMusic.vue'
 import HotMoreMusic from '../views/HotMoreMusic/HotMoreMusic.vue'
+import SongList from '../views/SongList/SongList.vue'
 import Vuex from 'vuex'
 import vant from 'vant'
 Vue.use(VueRouter)
@@ -46,6 +48,10 @@ const routes = [{
   path: '/hotmoremusic',
   name: 'HotMoreMusic',
   component: HotMoreMusic
+}, {
+  path: '/songList',
+  name: 'songList',
+  component: SongList
 }
 ]
 

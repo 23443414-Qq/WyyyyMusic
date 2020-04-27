@@ -97,9 +97,9 @@
   }
   .flagMusic{
     position: absolute;
-    width: 2.7rem;
-    height: 2.7rem;
-    left: 0;
+    width: 2.8rem;
+    height: 2.8rem;
+    left: -2.5%;
     background-color: #fff;
     border-radius: 50%;
     background-size: 75px;
@@ -120,7 +120,7 @@
      top: 50%;
      width: 1.5rem;
      height: 1.5rem;
-     background-color: #ff2e13;
+     background-color: #ed2effad;
      border-radius: 50%;
      background-image: url('../assets/flagMusic/flag1.png');
      background-size: 100% 100%;
@@ -166,12 +166,13 @@ export default {
         '100%': '#6149f6'
       },
       isRotation: true,
-      pseudoElementBoxShadow: { default: 'spin2 5s infinite linear' }
+      pseudoElementBoxShadow: { default: 'spin2 5s infinite linear' },
+      music: { id: '1425463866', name: '送给未来的你 DJ 弹鼓版', audiosrc: 'E:/ent/来自天堂的魔鬼.mp3', imgsrc: '../../assets/bgi3.jpg' }
     }
   },
   methods: {
     goFlagMusic () {
-      this.$router.push('/flagMusic')
+      this.$router.push({ name: 'flagMusic', params: this.music })
     },
     stopFlag () {
       this.flagMusic = !this.flagMusic

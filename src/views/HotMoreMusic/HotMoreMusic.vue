@@ -5,11 +5,13 @@
       <div class="tit">网友精选歌单</div>
     </header>
     <div :class="showList?hed1:hed">
-        <!-- <van-button class="list" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="listGetMusic(item.name)">A L L</van-button> -->
+        <van-button class="list" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="listGetMusic('Down')">Down</van-button>
+        <van-button class="list" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="listGetMusic('最新')">最新</van-button>
+        <van-button class="list" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="listGetMusic('最热')">最热</van-button>
         <van-button v-for="(item,index) in listName" :key="index" class="list" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="listGetMusic(item.name)">{{item.name}}</van-button>
     </div>
     <main class="main">
-        <div class="itemgrid" v-for="item in HotMoreMusic" :key="item.id">
+        <div class="itemgrid" @click="itemgrid(item.id)" v-for="item in HotMoreMusic" :key="item.id">
           <div class="img">
             <img :src="item.coverImgUrl">
           </div>
@@ -25,6 +27,7 @@
 .main{
   height: calc(100vh - 5.35rem);
   overflow: auto;
+  padding-bottom: 1rem;
 }
   header{
     width: 100%;
@@ -77,7 +80,7 @@
     }
   }
   .hed.showListMActive{
-    height: 7.3rem;
+    height: 33rem;
   }
   .itemgrid{
     width: 45%;
@@ -117,6 +120,7 @@ Vue.use(Toast, Button, Tab, Tabs)
 export default {
   created () {
     this.getPlayList()
+    this.getlistName()
   },
   data () {
     return {
@@ -126,8 +130,12 @@ export default {
       showList: false,
       hed1: ['hed', 'showListMActive'],
       hed: 'hed',
+      order: '',
+      songname: '',
       listName: [
         { name: 'Down', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '最新', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
+        { name: '最热', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
         { name: '浪漫', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
         { name: '华语', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
         { name: 'D J', color: 'linear-gradient(to right, #4bb0ff, #6149f6)' },
@@ -146,10 +154,10 @@ export default {
     }
   },
   methods: {
-    getPlayList () {
-      this.$http.post(`/top/playlist?limit=${this.limit}`)
+    getPlayList () { // 首屏展示数据
+      this.$http.post(`/top/playlist?limit=${this.limit}&order=${this.order}&cat=${this.songname}`)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           this.HotMoreMusic = res.data.playlists
         })
     },
@@ -159,7 +167,27 @@ export default {
     listGetMusic (item) {
       if (item === 'Down') {
         this.showList = !this.showList
+      } else if (item === '最新') {
+        this.order = 'new'
+        this.getPlayList()
+      } else if (item === '最热') {
+        this.order = 'hot'
+        this.getPlayList()
+      } else {
+        this.songname = item
+        this.showList = false
+        this.getPlayList()
       }
+    },
+    getlistName () { // 歌单获取
+      this.$http.post('/playlist/catlist')
+        .then((res) => {
+          console.log(res)
+          this.listName = res.data.sub
+        })
+    },
+    itemgrid (data) {
+      this.$router.push({ name: 'songList', params: { id: data } })
     }
   }
 }
