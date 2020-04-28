@@ -69,12 +69,12 @@
     position: static;
     top: 2.25rem;
     .list{
-      width: 4rem;
+      width: 17%;
       height: 1.8rem;
       border-radius: 0.3rem;
       display: inline-block;
       margin-top: 0.35rem;
-      margin-left: 0.55rem;
+      margin-left: .5625rem /* 9/16 */;
       padding: 0;
       line-height: 1.8rem;
     }

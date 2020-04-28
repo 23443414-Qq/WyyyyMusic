@@ -9,6 +9,7 @@ import HomePage from '../views/homepage/homepage.vue'
 import FlagMusic from '../views/flagMusic/flagMusic.vue'
 import HotMoreMusic from '../views/HotMoreMusic/HotMoreMusic.vue'
 import SongList from '../views/SongList/SongList.vue'
+import Login from '../views/login/login.vue'
 import Vuex from 'vuex'
 import vant from 'vant'
 Vue.use(VueRouter)
@@ -16,7 +17,11 @@ Vue.use(vant)
 Vue.use(Vuex)
 const routes = [{
   path: '/',
-  redirect: '/home/homepager'
+  redirect: '/login'
+}, {
+  path: '/login',
+  name: 'login',
+  component: Login
 }, {
   path: '/home',
   name: 'Home',

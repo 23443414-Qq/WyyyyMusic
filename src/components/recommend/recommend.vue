@@ -59,11 +59,7 @@ export default {
         })
     },
     login () {
-      this.$http.post('/login/cellphone?phone=13564278597&password=qq23443414')
-        .then((res) => {
-          // console.log(res)
-          this.userId = res.deta.account.id
-        })
+      console.log(this.$route.params.user)
     }
   }
 }
@@ -99,7 +95,6 @@ export default {
   margin-top: 10px;
   .MusicItem{
     width: 30%;
-    // height: 145px;
     float: left;
     margin-left: 2.6%;
     margin-bottom: 10px;
@@ -108,7 +103,7 @@ export default {
     border-radius: 6px;
     img{
       width: 100%;
-      // height: 110px;
+      height: 110px;
       border-radius: 10px;
     }
     .Musictext{
