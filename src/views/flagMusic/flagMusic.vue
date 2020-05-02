@@ -41,7 +41,6 @@
         width: 30%;
         margin: 0 auto;
         margin-top: 10px;
-        background-image: url();
       }
     }
     .tit{

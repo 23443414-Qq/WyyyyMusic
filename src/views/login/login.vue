@@ -198,6 +198,7 @@ export default {
         .then((res) => {
           console.log(res)
           if (res.data.code === 200) {
+            // this.$router.push({ name: 'home/homepager', params: { user: this.user } })
             this.user.userID = res.data.account.id
             this.user.token = res.data.token
             this.user.userImg = res.data.profile.avatarUrl
@@ -205,8 +206,7 @@ export default {
             if (this.checked) {
               localStorage.setItem('userINFo', JSON.stringify({ usercode: this.username, password: this.password }))
             }
-            // this.$router.push({ name: 'home/homepager', params: { user: this.user } })
-            document.cookie = `bing=${this.user.token}ni#kan%bu$dong@de!Token$`
+            // document.cookie = `bing=${this.user.token}`
           } else {
             Notify({
               message: '手机号或密码错误',
